@@ -1,0 +1,20 @@
+---
+// src/pages/generator.astro
+// Diese Seite lädt die interaktive React-Insel.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import GeneratorWidget from '@/components/GeneratorWidget.tsx';
+
+const pageTitle = "Tab Generator | GuitarSkillz.com";
+const pageDescription = "Der interaktive Gitarren-Tab-Generator. Erstelle und spiele Tabs in Echtzeit ab, passe Einstellungen an und exportiere deine Übungen.";
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-dark-900 mb-2">Tab Generator</h1>
+    <p class="text-lg text-dark-700 mb-6">
+      Stelle die Parameter ein, klicke auf 'Next' und fang an zu spielen.
+    </p>
+
+    <GeneratorWidget client:load />
+
+  </main>
+</BaseLayout>

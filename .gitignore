@@ -1,0 +1,24 @@
+# Dependencies
+/node_modules
+
+# Astro build cache and output
+/.astro
+/dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/

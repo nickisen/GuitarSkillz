@@ -1,0 +1,21 @@
+/* Importiert Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Source+Code+Pro:wght@400;700&display=swap');
+
+/* Tailwind Basis-Layer */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Globale Stile */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-light-100 text-dark-900 antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-dark-900;
+  }
+}

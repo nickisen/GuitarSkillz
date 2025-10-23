@@ -1,0 +1,15 @@
+/* Diese Datei kann CSS-Variablen definieren. 
+  In unserem Fall haben wir sie direkt in `tailwind.config.cjs` definiert.
+  Wenn man pures CSS/JS-Mixing bevorzugt, könnte man sie hier definieren:
+*/
+:root {
+  --color-primary: #E63946;
+  --color-primary-dark: #D62828;
+  --color-dark-900: #1D3557;
+  --color-dark-700: #457B9D;
+  --color-light-100: #F1FAEE;
+  --color-light-300: #A8DADC;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Source Code Pro', Menlo, monospace;
+}

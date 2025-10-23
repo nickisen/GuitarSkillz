@@ -1,0 +1,89 @@
+---
+// src/pages/index.astro
+// Dies ist die SEO-optimierte Landing Page. Kein client:load hier.
+import BaseLayout from '@/layouts/BaseLayout.astro'; // Annahme: Ein BaseLayout existiert
+import { JsonLd } from 'astro-seo';
+
+const pageTitle = "GuitarSkillz.com | Random Guitar Tab Generator";
+const pageDescription = "Verbessere dein Gitarrenspiel mit unendlich vielen, zufällig generierten Tabs. Unser Generator erstellt spielbare Übungen für Anfänger und Profis.";
+const canonicalUrl = "https://www.guitarskillz.com/";
+---
+<BaseLayout title={pageTitle} description={pageDescription} canonical={canonicalUrl}>
+  
+  <JsonLd slot="seo" schema={{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "GuitarSkillz.com",
+    "url": "https://www.guitarskillz.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.guitarskillz.com/generator?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }} />
+
+  <JsonLd slot="seo" schema={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist GuitarSkillz.com?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GuitarSkillz.com ist ein kostenloser Online-Generator für Gitarren-Tabs. Er erstellt zufällige, aber musikalisch und technisch spielbare Übungsstücke, um deine Fähigkeiten im Blattlesen und deine Fingerfertigkeit zu verbessern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie funktioniert der 'Hand-Reachable'-Algorithmus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unser Algorithmus stellt sicher, dass aufeinanderfolgende Noten oder Akkorde den maximalen Fingerspreiz (maxStretch) eines durchschnittlichen Spielers nicht überschreiten. Unspielbare Notenkombinationen werden automatisch angepasst."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist der Generator kostenlos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, die Nutzung von GuitarSkillz.com ist vollständig kostenlos. Es ist ein reines Client-Side-Tool, das in deinem Browser läuft."
+        }
+      }
+    ]
+  }} />
+
+  <div class="container mx-auto px-4 py-16 text-center">
+    <h1 class="text-5xl font-extrabold text-dark-900 mb-4">
+      Hör auf zu Suchen. Fang an zu Spielen.
+    </h1>
+    <p class="text-xl text-dark-700 mb-8 max-w-2xl mx-auto">
+      Generiere sofort unendlich viele, spielbare Gitarren-Tabs. 
+      Perfektioniert für dein tägliches Training.
+    </p>
+    <a 
+      href="/generator" 
+      class="inline-block bg-primary-DEFAULT hover:bg-primary-dark text-white font-bold text-lg py-4 px-10 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+    >
+      Jetzt Generator starten
+    </a>
+
+    <div class="mt-16 p-8 bg-light-100 rounded-lg shadow-inner">
+      <h2 class="text-3xl font-bold text-dark-900 mb-6">Features im Überblick</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-left">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-dark-900">🎛️ Volle Kontrolle</h3>
+          <p class="text-dark-700">Stelle Tempo, Taktanzahl, Komplexität und den maximalen Fingerspreiz nach deinen Wünschen ein.</p>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-dark-900">🤲 Spielbar Designt</h3>
+          <p class="text-dark-700">Unser Algorithmus sorgt dafür, dass jede generierte Note erreichbar ist. Kein Frust mehr durch unmögliche Griffe.</p>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-dark-900">⚡ Sofort Startklar</h3>
+          <p class="text-dark-700">Keine Anmeldung, kein Backend. Alles läuft blitzschnell und lokal in deinem Browser.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

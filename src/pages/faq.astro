@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+// Optional: Importiere eine Akkordeon-Komponente, wenn gewünscht
+// import Accordion from '@/components/Accordion.astro';
+
+const pageTitle = "FAQ - Häufig gestellte Fragen | GuitarSkillz.com";
+const pageDescription = "Antworten auf die häufigsten Fragen zu unserem Random Tab Generator, dem Algorithmus und den Export-Funktionen.";
+
+const faqs = [
+  {
+    q: "Was ist GuitarSkillz.com?",
+    a: "GuitarSkillz.com ist ein kostenloser Online-Generator für Gitarren-Tabs. Er erstellt zufällige, aber musikalisch und technisch spielbare Übungsstücke, um deine Fähigkeiten im Blattlesen und deine Fingerfertigkeit zu verbessern."
+  },
+  {
+    q: "Wie funktioniert der 'Hand-Reachable'-Algorithmus?",
+    a: "Unser Algorithmus stellt sicher, dass aufeinanderfolgende Noten oder Akkorde den maximalen Fingerspreiz (maxStretch) eines durchschnittlichen Spielers nicht überschreiten. Wenn eine zufällig gewählte Note zu weit von der vorherigen entfernt ist, wird sie automatisch näher an die 'Handposition' der vorherigen Note korrigiert."
+  },
+  {
+    q: "Ist der Generator kostenlos?",
+    a: "Ja, die Nutzung von GuitarSkillz.com ist vollständig kostenlos. Es ist ein reines Client-Side-Tool, das in deinem Browser läuft. Es gibt kein Backend und keine Datenspeicherung auf unseren Servern."
+  },
+  {
+    q: "Welche Exportformate werden unterstützt?",
+    a: "Du kannst die generierten Tabs als SVG (Vektorgrafik), PNG (Bilddatei) oder als reinen ASCII-Text (für Copy & Paste in Editoren) exportieren."
+  },
+  {
+    q: "Funktioniert die Seite auch auf dem Handy?",
+    a: "Ja, die Seite ist vollständig responsiv. Der Generator und der Tab-Viewport passen sich an die Bildschirmgröße an, sodass du auch unterwegs üben kannst."
+  }
+];
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="container mx-auto px-4 py-12 max-w-3xl">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">
+      Häufig gestellte Fragen (FAQ)
+    </h1>
+    
+    <div class="space-y-6">
+      {faqs.map(faq => (
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <h2 class="text-2xl font-semibold text-dark-900 mb-3">{faq.q}</h2>
+          <p class="text-lg text-dark-700 leading-relaxed">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

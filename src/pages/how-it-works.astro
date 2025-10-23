@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const pageTitle = "So funktioniert's | GuitarSkillz.com";
+const pageDescription = "Erfahre mehr über die Technologie und die Logik hinter dem GuitarSkillz Tab Generator, von Astro über React bis hin zum Spielbarkeits-Algorithmus.";
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="container mx-auto px-4 py-12 max-w-3xl">
+    <div class="prose prose-lg lg:prose-xl max-w-none">
+      <h1 class="text-4xl font-extrabold mb-8 text-center">
+        Wie funktioniert GuitarSkillz?
+      </h1>
+      
+      <p>
+        GuitarSkillz.com ist ein modernes Webprojekt, das darauf ausgelegt ist,
+        extrem schnell und dennoch hochgradig interaktiv zu sein. Wir verwenden 
+        eine "Island Architecture" mit <a href="https://astro.build/">Astro</a>.
+      </p>
+
+      <h2>1. Die Technologie (Astro + React)</h2>
+      <p>
+        Die meisten Seiten (wie diese hier, die Startseite oder die FAQ-Seite) 
+        sind reines HTML und CSS. Sie werden von Astro statisch generiert (SSG). 
+        Dadurch laden sie blitzschnell und sind perfekt für SEO.
+      </p>
+      <p>
+        Nur die interaktive Komponente – der <strong>Tab Generator</strong> selbst – 
+        ist eine <a href="https://react.dev/">React</a>-Komponente. Astro lädt 
+        das nötige JavaScript für diese "Insel" (Island) erst dann, wenn die 
+        Generator-Seite besucht wird. Das hält den Rest der Website schlank.
+      </p>
+
+      <h2>2. Der Tab-Algorithmus (<code>tabGenerator.ts</code>)</h2>
+      <p>
+        Das Herzstück ist unser Generator in TypeScript. Er funktioniert in 
+        mehreren Schritten:
+      </p>
+      <ol>
+        <li>
+          <strong>Takt füllen:</strong> Der Generator versucht, jeden Takt (z.B. 4/4) 
+          mit Noten zu füllen. Die Dauer der Noten (Viertel, Achtel etc.) 
+          wird basierend auf der gewählten Komplexität bestimmt.
+        </li>
+        <li>
+          <strong>Note auswählen:</strong> Eine zufällige Saite und ein zufälliger Bund 
+          werden gewählt.
+        </li>
+        <li>
+          <strong>Spielbarkeits-Check:</strong> Hier passiert die Magie. Der 
+          Algorithmus prüft die "neue" Note gegen die "vorherige" Note:
+          <ul>
+            <li>Liegt der Bund-Abstand innerhalb des "Max. Fingerspreiz" (z.B. 4 Bünde)?</li>
+            <li>Spielt man auf derselben Saite, ist alles erlaubt.</li>
+            <li>Sind es offene Saiten (Fret 0), ist auch alles erlaubt.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Korrektur:</strong> Wenn eine Note "unspielbar" ist (z.B. Fret 3 auf 
+          Saite A gefolgt von Fret 10 auf Saite D), wird die neue Note 
+          automatisch korrigiert. Sie wird auf einen Bund "verschoben", der 
+          in Reichweite der vorherigen Handposition liegt.
+        </li>
+      </ol>
+      <p>
+        Das Ergebnis ist ein Tab, der zwar zufällig ist, sich aber immer wie 
+        ein "echtes", spielbares Riff anfühlt.
+      </p>
+
+      <h2>3. Das Rendering (SVG und Playhead)</h2>
+      <p>
+        Wir verwenden kein VexFlow oder andere schwere Bibliotheken. Die Tabs 
+        werden direkt als <strong>SVG</strong> (Scalable Vector Graphics) 
+        gerendert. Das ist schnell, gestochen scharf und leicht zu animieren.
+      </p>
+      <p>
+        Der rote <strong>Playhead</strong> ist ein einfaches `div`-Element, das 
+        über dem SVG liegt. Seine Position wird über 
+        <code>requestAnimationFrame</code> in JavaScript synchron zum 
+        eingestellten Tempo (BPM) animiert.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
